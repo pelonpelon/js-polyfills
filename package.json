@@ -1,0 +1,19 @@
+{
+  "name": "js-polyfills",
+  "version": "0.0.1",
+  "description": "my personal generic library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pelonpelon/js-polyfills.git"
+  },
+  "author": "pelonpelon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pelonpelon/js-polyfills/issues"
+  },
+  "homepage": "https://github.com/pelonpelon/js-polyfills#readme"
+}
