@@ -4,11 +4,28 @@
 /***
 
 Note: The bind(..) polyfill shown below differs from the built-in bind(..) in
-ES5 with respect to hard-bound functions that will be used with new (see below
-for why that's useful). Because the polyfill cannot create a function without
-a .prototype as the built-in utility does, there's some nuanced indirection to
-approximate the same behavior. Tread carefully if you plan to use new with
-a hard-bound function and you rely on this polyfill.
+ES5 with respect to hard-bound functions that will be used with new.
+
+The primary reason for this behavior is to create a function (that can be used
+with new for constructing objects) that essentially ignores the this hard
+binding but which presets some or all of the function's arguments. One of the
+capabilities of bind(..) is that any arguments passed after the first this
+binding argument are defaulted as standard arguments to the underlying function
+(technically called "partial application", which is a subset of "currying").
+
+Example:
+function foo(p1,p2) {
+    this.val = p1 + p2;
+}
+
+// using `null` here because we don't care about
+// the `this` hard-binding in this scenario, and
+// it will be overridden by the `new` call anyway!
+var bar = foo.bind( null, "p1" );
+
+var baz = new bar( "p2" );
+
+baz.val; // p1p2
 
 ***/
 
